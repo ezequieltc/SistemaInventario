@@ -1,0 +1,16 @@
+
+{% extends 'inventario/base.html' %}
+
+{%block titulo%}Pagina Home{% endblock titulo %}
+
+{% block cuerpo %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ object.nombre_producto }}</a>
+            </div>
+            <a class="btn btn-secondary" href="#">Actualizar</a>
+            <a class="btn btn-danger" href="#">Eliminar</a>
+            </div>
+        </article>
+{% endblock cuerpo %}

@@ -1,0 +1,33 @@
+{% extends 'inventario/base.html' %} 
+{% load crispy_forms_tags %} 
+{%block titulo%}Ingresar Orden de Venta{% endblock titulo %} 
+{% block cuerpo %}
+<legend class="border-bottom mb-4">Ingresar la orden de venta:</legend>
+<form action="" method="POST">
+  {% csrf_token %} {{ form | crispy}}
+  <button class="btn btn-outline-secondary" name="agregar">Agregar a orden</button>
+  <button class="btn btn-success" name="aceptar" type="submit">Ingresar lista</button>
+  <button class="btn btn-danger" name='cancelar'>Eliminar lista</button>
+
+  <legend class="border-bottom mb-4">Orden de venta:</legend>
+  <table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre Producto</th>
+            <th scope="col">Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+  {%for items in lista%}
+  <tr> 
+    <td scope="row" style="width:400px">{{ items.item }}</td>
+    <td scope="row" style="width:300px">{{items.cantidad}}</td>
+  </tr>
+  {%endfor%}
+  <tr> 
+    <td scope="row" style="width:10px">Total:</td>
+    <td scope="row" style="width:10px">$ {{total}}</td>
+  </tr>
+</form>
+
+{% endblock cuerpo %}

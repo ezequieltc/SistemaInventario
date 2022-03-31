@@ -1,0 +1,20 @@
+{% extends 'inventario/base.html' %}
+{% load crispy_forms_tags %}
+{%block titulo%}Eliminar Item{% endblock titulo %}
+        {%block cuerpo%}
+            <div class="content-section">
+                <form method="POST">           
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Eliminar Item</legend>
+                        <h2> ¿Está seguro que quiere borrar el item "{{object.nombre_producto}}"</h2>
+                    </fieldset>
+                    <div class="form.group">
+                        <button class="btn btn-success" type="submit">Eliminar</button>
+                        <a class="btn btn-danger" href="{%url "consulta_item"%}">Cancelar</a>
+                    </div>
+                </form>
+             </div>
+        
+        
+        {% endblock %}

@@ -1,0 +1,20 @@
+{%extends 'inventario/base.html'%} 
+{% load crispy_forms_tags %}
+{%block titulo%}Crear Item{% endblock titulo %}
+        {%block cuerpo%}
+            <div class="content-section">
+                <form method="POST" enctype="multipart/form-data">           
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Dar de alta Item</legend>
+                        {{ form | crispy}}
+                    </fieldset>
+                    <div class="form.group">
+                        <button class="btn btn-success" type="submit">Crear Item</button>
+                        <a class="btn btn-danger" href="{%url 'home'%}">Cancelar</a>
+                    </div>
+                </form>
+             </div>
+        
+        
+        {% endblock %}

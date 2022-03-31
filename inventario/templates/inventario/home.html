@@ -1,0 +1,48 @@
+{%extends 'inventario/base.html'%} 
+{%block titulo%} Pagina Principal {%endblock titulo%} 
+{%block cuerpo%} 
+    <legend class="border-bottom mb-4">Bienvenido {{user.get_username}}</legend>
+    
+<div class="row">
+    <div class="col-sm-4">
+      <div class="dashboard-item">
+        <div class="dashboard-item-titulo">Ventas totales</div>
+        <div class="dashboard-item-cuerpo">${{total}}</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="dashboard-item">
+        <div class="dashboard-item-titulo">Total en Stock</div>
+        <div class="dashboard-item-cuerpo">${{stock}}</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="dashboard-item">
+        <div class="dashboard-item-titulo">Blablablabla</div>
+        <div class="dashboard-item-cuerpo">${{stock}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="dashboard-item">
+        <div class="dashboard-item-titulo">Productos más vendidos</div>
+        <div class="dashboard-item-cuerpo">
+          <ul>
+          {%for item in items%}
+            <li>{{item}}</li>
+          {%endfor%}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="dashboard-item">
+        <div class="dashboard-item-titulo">Productos con stock bajo</div>
+        <div class="dashboard-item-cuerpo">${{stock}}</div>
+      </div>
+    </div>
+  </div>
+    
+
+{%endblock cuerpo%}

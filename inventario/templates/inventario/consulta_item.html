@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%extends 'inventario/base.html'%} 
+{% csrf_token %}
+{% load crispy_forms_tags %}
+{%block titulo%} Consulta de Item {%endblock titulo%} 
+{%block cuerpo%} 
+    <legend class="border-bottom mb-4">Filtrar item:</legend>
+    <form method="GET">
+        {{ filter.form | crispy }}
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+    <legend class="border-bottom mb-4">Consulta de Item:</legend>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre Producto</th>
+                <th scope="col">Descripcion Producto</th>
+                <th scope="col">Linea</th>
+                <th scope="col">Cantidad en Stock</th>
+                <th scope="col">Valor del Stock</th>
+                <th scope="col">Precio de Compra</th>
+                <th scope="col">Precio de Venta</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in filter.qs %}
+            <tr> 
+                <td scope="row" style="width:10px">{{ item.id }}</td>
+                <td scope="row" style="width:400px">{{ item.nombre_producto }}</td>
+                <td scope="row" style="width:300px">{{ item.descripcion_producto }}</td>
+                <td scope="row" style="width:150px">{{ item.linea }}</td>
+                <td scope="row" style="width:30px">{{ item.cantidad_en_stock }}</td>
+                <td scope="row" style="width:30px">${{ item.valor_en_stock }}</td>
+                <td scope="row" style="width:70px">$ {{ item.precio_compra }}</td>
+                <td scope="row" style="width:90px">$ {{ item.precio_venta  }}</td>
+                <td scope="row" style="width:20px"><a href="/item/{{item.id}}/update" class="btn btn-primary">Actualizar</button></td>
+                <td scope="row" style="width:20px"><a href="/item/{{item.id}}/delete" class="btn btn-danger">Borrar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{%endblock cuerpo%}
